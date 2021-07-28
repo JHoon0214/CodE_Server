@@ -13,7 +13,7 @@ import "reflect-metadata";
     TypeOrmModule.forRoot(),
     PreTestingModule,
     AuthModule,
-    UsersModule
+    UsersModule,
     SignUpModule
   ],
   controllers: [AppController],
