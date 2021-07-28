@@ -5,6 +5,7 @@ import { PreTestingModule } from './pre-testing/pre-testing.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { SignUpModule } from './sign-up/sign-up.module';
 import "reflect-metadata";
 
 @Module({
@@ -13,6 +14,7 @@ import "reflect-metadata";
     PreTestingModule,
     AuthModule,
     UsersModule
+    SignUpModule
   ],
   controllers: [AppController],
   providers: [AppService],
