@@ -18,5 +18,8 @@ export class Project {
 	image: string;
 
 	@Column("simple-array")
-	teams: string[];
+	teamsMember: string[];
+
+	@Column("simple-array")
+	teamsRole: string[];
 }

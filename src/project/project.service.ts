@@ -13,4 +13,35 @@ export class ProjectService {
 	async createNewProject(projectInfo) {
 		await this.projectRepo.insert(projectInfo);
 	}
+
+	async deleteAll() {
+		await this.projectRepo.delete({});
+	}
+
+	async getRecentProjects(user) {
+		const allProjects = (await this.projectRepo.find({
+			order: {
+				updatedDate: 'DESC',
+			}
+		}))
+
+		const recentProject = []
+		let findedNum = 0;
+
+		for(const project of allProjects) {
+			if(project.teamsMember.includes(user.eMail)) {
+				recentProject.push(project);
+				findedNum++;
+			}
+			if(findedNum >= 3)
+				break
+		}
+
+		for(findedNum; findedNum<3; findedNum++)
+			recentProject.push({
+				"name": ""
+			})
+
+		return {"recentProjectArr": recentProject}
+	}
 }
