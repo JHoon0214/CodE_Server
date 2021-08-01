@@ -1,9 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Project {
 	@PrimaryGeneratedColumn('uuid')
 	classification: string;
+
+	@UpdateDateColumn({type: "timestamp"})
+	updatedDate: Date
 
 	@Column()
 	name: string;
