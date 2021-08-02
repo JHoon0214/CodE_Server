@@ -13,4 +13,10 @@ export class UsersService {
 	async findOne(eMail: string): Promise<Users | undefined> {
 		return this.userRepo.findOne({"eMail": eMail});
 	}
+
+	async checkUserValidation(eMail:string) {
+		if(await this.userRepo.findOne({"eMail": eMail}))
+			return "true"
+		return "false"
+	}
 }
