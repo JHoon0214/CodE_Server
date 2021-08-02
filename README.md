@@ -1,3 +1,4 @@
+코딩 프로젝트 일정 관리 어플 CodE 서버 개발 레포 :)
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
