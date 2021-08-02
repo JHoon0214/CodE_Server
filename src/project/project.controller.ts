@@ -24,4 +24,10 @@ export class ProjectController {
 	async getRecentProjects(@Request() req) {
 		return await this.projectService.getRecentProjects(req.user)
 	}
+
+	@UseGuards(JwtAuthGuard)
+	@Get("/projects")
+	async getAllProjects(@Request() req) {
+		return await this.projectService.getAllProjects(req.user)
+	}
 }

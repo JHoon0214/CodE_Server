@@ -29,7 +29,9 @@ export class ProjectService {
 		let findedNum = 0;
 
 		for(const project of allProjects) {
-			if(project.teamsMember.includes(user.eMail)) {
+			let targetIndex = project.teamsMember.indexOf(user.eMail)
+			if(targetIndex !== -1) {
+				project["myRole"] = project.teamsRole[targetIndex];
 				recentProject.push(project);
 				findedNum++;
 			}
@@ -43,5 +45,20 @@ export class ProjectService {
 			})
 
 		return {"recentProjectArr": recentProject}
+	}
+
+	async getAllProjects(user) {
+		const allProjects = (await this.projectRepo.find({
+			order: {
+				updatedDate: 'DESC',
+			}
+		}))
+		let myProject = []
+		for(const project of allProjects) {
+			if(project.teamsMember.includes(user.eMail)) {
+				myProject.push(project);
+			}
+		}
+		return {"ProjectArr": myProject};
 	}
 }
